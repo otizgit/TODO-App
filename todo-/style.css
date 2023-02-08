@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Josefin Sans", sans-serif;
+    list-style: none;
+    text-decoration: none;
+    transition: .3s ease;
+}
+
+img, video, svg {
+    display: block;
+}
+
+:root {
+    /* Light Theme */
+    --VeryLightGray: hsl(0, 0%, 98%);
+    --VeryLightGrayishBlue: hsl(236, 33%, 92%);
+    --LightGrayishBlue1: hsl(233, 11%, 84%);
+    --DarkGrayishBlue1: hsl(236, 9%, 61%);
+    --VeryDarkGrayishBlue1: #484b6a;
+    
+    /* ! Dark Theme */
+    --VeryDarkBlue: hsl(235, 21%, 11%);
+    --VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
+    --LightGrayishBlue: hsl(234, 39%, 85%);
+    -LightGrayishBlueHover: hsl(236, 33%, 92%);
+    --DarkGrayishBlue: hsl(234, 11%, 52%);
+    --VeryDarkGrayishBlue: hsl(233, 14%, 35%);
+    --VeryDarkGrayishBlue: hsl(237, 14%, 26%);
+
+    /* * CLAMP: */
+    --regular-clamp: clamp(19px, 1.7vw, 60px);
+    --listClamp: clamp(15px, 1.3vw, 70px);
+    --inputClamp: clamp(16px, 1.4vw, 60px);
+    --paddingclamp: clamp(18px, 2vw, 50px);
+    --trackclamp: clamp(15px, 1.1vw, 40px);
+
+    --darkshadow: hsla(0, 0%, 0%, 0.74);
+}
+
+main {
+    background-color: var(--VeryDarkBlue);
+    min-height: 100vh;
+}
+
+.hero-img {
+    height: 40vh;
+    position: relative;
+}
+.dark-img,
+.light-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    transition: .3s ease;
+}
+
+.light-img {
+    opacity: 0;
+}
+
+.container {
+    transform: translateY(-30vh);
+    width: min(38%, 1500px);
+    margin-inline: auto;
+}
+
+.container-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: clamp(30px, 1vw, 60px);
+}
+
+.logo {
+    font-size: clamp(40px, 2.5vw, 100px);
+    letter-spacing: 6px;
+    color: var(--VeryLightGray);
+}
+
+.input-div {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.todo-button {
+    outline: none;
+    border: none;    
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    visibility: hidden;
+}
+
+.todo-input {
+    width: 100%;
+    font-size: var(--inputClamp);
+    padding: clamp(25px, 1.4vw, 50px) clamp(20px, 1.4vw, 45px);
+    outline: none;
+    border: none;
+    background-color: var(--VeryDarkDesaturatedBlue);
+    color: var(--LightGrayishBlue);
+    border-radius: 7px;
+}
+
+.todo-container {
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 5px 20px -3px var(--darkshadow);
+}
+
+.todo {
+    background-color: var(--VeryDarkDesaturatedBlue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(20px, 1vw, 40px);
+    border-bottom: clamp(1px, .2vw, 5px) solid var(--VeryDarkGrayishBlue);
+    transition: .3s ease;
+    padding: clamp(25px, 1.4vw, 50px) clamp(20px, 1.4vw, 45px);
+}
+
+.todo-item {
+    color: var(--LightGrayishBlue);
+    font-size: var(--listClamp);
+    flex: 1;   
+    font-weight: 500; 
+    line-height: 1.7;
+}
+
+.trash {
+    cursor: pointer;
+}
+.trash img {
+    pointer-events: none;
+    width: clamp(20px, 1.3vw, 80px);
+}
+.trash:hover.trash img {
+    transform: scale(1.2);
+}
+
+.track-div {
+    display: flex;
+    padding: clamp(17px, 1.2vw, 30px) clamp(25px, 1.1vw, 50px);
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--VeryDarkDesaturatedBlue);
+    font-weight: 600;
+    color: var(--DarkGrayishBlue);
+    font-size: 14px;
+}
+
+.filter-todo {
+    display: flex;
+    align-items: center;
+    gap: clamp(15px, 1.2vw, 45px);
+}
+
+.all {
+    color: #2de674;
+}
+
+.filter-todo div,
+.clear,
+.clear-all {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: var(--trackclamp);
+}
+.filter-todo div:hover,
+.clear:hover {
+    color: var(--VeryLightGrayishBlue);
+}
+
+.clear-all:hover {
+    color: var(--VeryLightGrayishBlue);
+}
+
+.positive {
+    color: rgb(49, 49, 240);
+}
+.positive:hover {
+    color: rgb(49, 49, 240);
+}
+
+.complete-btn {
+  cursor: pointer;
+  font-size: clamp(11px, 1vw, 30px);
+  border: none;
+  padding: clamp(5px, .4vw, 20px);
+  color: white;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgb(75, 65, 65);
+}
+.complete-btn i {
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.completed-todo {
+    text-decoration: line-through;
+    background-color: var(--VeryDarkBlue);
+}
+.completed-todo li {
+    color: var(--DarkGrayishBlue);
+}
+.checked {
+    background: linear-gradient(to right, rgb(1, 197, 197), rgb(7, 196, 108));
+}
+.checked i {
+    visibility: visible;
+}
+
+.fall {
+    transform: translateY(30px);
+    opacity: 0;
+    color: #777a92;
+}
+  
+.toggle-mode {
+    position: relative;
+    width: clamp(35px, 3vw, 120px);
+    height: clamp(35px, 3vw, 120px);
+    overflow: hidden;
+    cursor: pointer;
+}
+.toggle-mode:hover .sun {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+.toggle-mode:hover .moon {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.sun,
+.moon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(25px, 1.6vw, 100px);
+}
+
+.moon {
+    top: -50%;
+}
+
+.display-moon {
+    top: 50%;
+}
+.slide-sun {
+    left: -50%;
+}
+
+.hide-img {
+    opacity: 0;
+}
+.show-img {
+    opacity: 1;
+}
+
+.firefox-dark {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(53, 53, 53) grey;
+}
+
+.chromium-dark::-webkit-scrollbar {
+    width: 1vw;
+}
+
+.chromium-dark::-webkit-scrollbar-thumb {
+    background-color: rgb(53, 53, 53);
+}
+
+.chromium-dark::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(97, 97, 97);
+}
+
+.chromium-dark::-webkit-scrollbar-track {
+    background-color: black;
+}
+
+/* MEDIA QUERIES: */
+@media (max-width: 1250px) {
+    .container {
+        width: 55%;
+    }
+}
+
+@media (max-width: 805px) {
+    .container {
+        width: 90%;
+    }
+    .track-div {
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+    .filter-todo {
+        width: 100%;
+        justify-content: center;
+        gap: 40px;
+        padding: clamp(20px, 1.2vw, 30px) clamp(45px, 1.1vw, 50px);
+    }
+    .todo-input {
+        --inputClamp: clamp(20px, 1.4vw, 60px);
+    }
+    .todo-item {
+        --listClamp: clamp(17px, 1.3vw, 50px);
+    }
+}
