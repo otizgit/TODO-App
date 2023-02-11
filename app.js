@@ -29,43 +29,6 @@ filterOptions.addEventListener("click", filterTodo);
 
 // clearAll.addEventListener("click", clearTodos);
 
-sun.addEventListener("click", lightMode);
-
-moon.addEventListener("click", darkMode);
-
-html.classList.add("chromium-dark");
-html.classList.add("firefox-dark");
-
-function lightMode() {
-  moon.classList.add("display-moon");
-  sun.classList.add("slide-sun");
-  darkImg.classList.add("hide-img");
-  lightImg.classList.add("show-img");
-  root.style.setProperty("--VeryDarkBlue", "hsl(0, 0%, 98%)");
-  root.style.setProperty("--VeryDarkDesaturatedBlue", "hsl(0, 0%, 98%)");
-  root.style.setProperty("--LightGrayishBlue", "hsl(235, 24%, 19%)");
-  root.style.setProperty("--VeryLightGrayishBlue", "hsl(235, 19%, 35%)");
-  root.style.setProperty("--VeryDarkGrayishBlue", "hsl(236, 9%, 61%)");
-  root.style.setProperty("--darkshadow", "#585656bd");
-  html.classList.remove("firefox-light");
-  html.classList.remove("chromium-dark");
-}
-
-function darkMode() {
-  moon.classList.remove("display-moon");
-  sun.classList.remove("slide-sun");
-  darkImg.classList.remove("hide-img");
-  lightImg.classList.remove("show-img");
-  root.style.removeProperty("--VeryDarkBlue", "hsl(0, 0%, 98%)");
-  root.style.removeProperty("--VeryDarkDesaturatedBlue", "hsl(0, 0%, 98%)");
-  root.style.removeProperty("--LightGrayishBlue", "hsl(235, 24%, 19%)");
-  root.style.removeProperty("--VeryLightGrayishBlue", "hsl(235, 19%, 35%)");
-  root.style.removeProperty("--VeryDarkGrayishBlue", "hsl(236, 9%, 61%)");
-  root.style.removeProperty("--darkshadow", "#585656bd");
-  html.classList.add("firefox-dark");
-  html.classList.add("chromium-dark");
-}
-
 function addTodo(event) {
   event.preventDefault();
 
@@ -183,8 +146,8 @@ function saveLocalTodos(todo) {
 }
 
 function saveDarkMode(mode) {
-  mode = JSON.parse(localStorage.getItem("mode"))
-  localStorage.setItem("mode", JSON.stringify(mode))
+  mode = JSON.parse(localStorage.getItem("mode"));
+  localStorage.setItem("mode", JSON.stringify(mode));
 }
 
 function getTodos() {
@@ -228,3 +191,75 @@ function removeLocalTodos(todo) {
   todos.splice(todos.indexOf(todoIndex), 1);
   localStorage.setItem("todos", JSON.stringify(todos));
 }
+
+if (localStorage.getItem('darkMode') === null) {
+  localStorage.setItem('darkMode', "true");
+}
+
+checkStatus();
+
+function checkStatus() {
+  if (localStorage.getItem('darkMode') === "true") {
+    moon.classList.remove("display-moon");
+    sun.classList.remove("slide-sun");
+    darkImg.classList.remove("hide-img");
+    lightImg.classList.remove("show-img");
+    root.style.removeProperty("--VeryDarkBlue", "hsl(0, 0%, 98%)");
+    root.style.removeProperty("--VeryDarkDesaturatedBlue", "hsl(0, 0%, 98%)");
+    root.style.removeProperty("--LightGrayishBlue", "hsl(235, 24%, 19%)");
+    root.style.removeProperty("--VeryLightGrayishBlue", "hsl(235, 19%, 35%)");
+    root.style.removeProperty("--VeryDarkGrayishBlue", "hsl(236, 9%, 61%)");
+    root.style.removeProperty("--darkshadow", "#585656bd");
+    html.classList.add("firefox-dark");
+    html.classList.add("chromium-dark");
+  } else {
+    moon.classList.add("display-moon");
+    sun.classList.add("slide-sun");
+    darkImg.classList.add("hide-img");
+    lightImg.classList.add("show-img");
+    root.style.setProperty("--VeryDarkBlue", "hsl(0, 0%, 98%)");
+    root.style.setProperty("--VeryDarkDesaturatedBlue", "hsl(0, 0%, 98%)");
+    root.style.setProperty("--LightGrayishBlue", "hsl(235, 24%, 19%)");
+    root.style.setProperty("--VeryLightGrayishBlue", "hsl(235, 19%, 35%)");
+    root.style.setProperty("--VeryDarkGrayishBlue", "hsl(236, 9%, 61%)");
+    root.style.setProperty("--darkshadow", "#585656bd");
+    html.classList.remove("firefox-dark");
+    html.classList.remove("chromium-dark");
+  }
+}
+
+function changeToLight() {
+  localStorage.setItem('darkMode', "false");
+  moon.classList.add("display-moon");
+  sun.classList.add("slide-sun");
+  darkImg.classList.add("hide-img");
+  lightImg.classList.add("show-img");
+  root.style.setProperty("--VeryDarkBlue", "hsl(0, 0%, 98%)");
+  root.style.setProperty("--VeryDarkDesaturatedBlue", "hsl(0, 0%, 98%)");
+  root.style.setProperty("--LightGrayishBlue", "hsl(235, 24%, 19%)");
+  root.style.setProperty("--VeryLightGrayishBlue", "hsl(235, 19%, 35%)");
+  root.style.setProperty("--VeryDarkGrayishBlue", "hsl(236, 9%, 61%)");
+  root.style.setProperty("--darkshadow", "#585656bd");
+  html.classList.remove("firefox-dark");
+  html.classList.remove("chromium-dark");
+}
+
+function changeToDark() {
+  localStorage.setItem('darkMode', "true");
+  moon.classList.remove("display-moon");
+  sun.classList.remove("slide-sun");
+  darkImg.classList.remove("hide-img");
+  lightImg.classList.remove("show-img");
+  root.style.removeProperty("--VeryDarkBlue", "hsl(0, 0%, 98%)");
+  root.style.removeProperty("--VeryDarkDesaturatedBlue", "hsl(0, 0%, 98%)");
+  root.style.removeProperty("--LightGrayishBlue", "hsl(235, 24%, 19%)");
+  root.style.removeProperty("--VeryLightGrayishBlue", "hsl(235, 19%, 35%)");
+  root.style.removeProperty("--VeryDarkGrayishBlue", "hsl(236, 9%, 61%)");
+  root.style.removeProperty("--darkshadow", "#585656bd");
+  html.classList.add("firefox-dark");
+  html.classList.add("chromium-dark");
+}
+
+sun.addEventListener("click", changeToLight);
+
+moon.addEventListener("click", changeToDark);
