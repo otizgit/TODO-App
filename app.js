@@ -32,27 +32,31 @@ filterOptions.addEventListener("click", filterTodo);
 function addTodo(event) {
   event.preventDefault();
 
-  const todoDiv = document.createElement("div");
-  todoDiv.classList.add("todo");
-
-  const completedBtn = document.createElement("button");
-  completedBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
-  completedBtn.classList.add("complete-btn");
-  todoDiv.appendChild(completedBtn);
-
-  const newTodo = document.createElement("li");
-  newTodo.innerText = todoInput.value;
-  newTodo.classList.add("todo-item");
-  todoDiv.appendChild(newTodo);
-
-  saveLocalTodos(todoInput.value);
-
-  const trashBtn = document.createElement("div");
-  trashBtn.innerHTML = '<img src="./images/icon-cross.svg" alt="icon-cross">';
-  trashBtn.classList.add("trash");
-  todoDiv.appendChild(trashBtn);
-
-  todoList.appendChild(todoDiv);
+  if (todoInput.value.trim() !== "") {
+    const todoDiv = document.createElement("div");
+    todoDiv.classList.add("todo");
+  
+    const completedBtn = document.createElement("button");
+    completedBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
+    completedBtn.classList.add("complete-btn");
+    todoDiv.appendChild(completedBtn);
+  
+    const newTodo = document.createElement("li");
+    newTodo.innerText = todoInput.value;
+    newTodo.classList.add("todo-item");
+    todoDiv.appendChild(newTodo);
+  
+    saveLocalTodos(todoInput.value);
+  
+    const trashBtn = document.createElement("div");
+    trashBtn.innerHTML = '<img src="./images/icon-cross.svg" alt="icon-cross">';
+    trashBtn.classList.add("trash");
+    todoDiv.appendChild(trashBtn);
+  
+    todoList.appendChild(todoDiv);
+  } else {
+    alert("Please enter a task.")
+  }
 
   todoInput.value = "";
 }
