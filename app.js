@@ -35,27 +35,27 @@ function addTodo(event) {
   if (todoInput.value.trim() !== "") {
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
-  
+
     const completedBtn = document.createElement("button");
     completedBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
     completedBtn.classList.add("complete-btn");
     todoDiv.appendChild(completedBtn);
-  
+
     const newTodo = document.createElement("li");
     newTodo.innerText = todoInput.value;
     newTodo.classList.add("todo-item");
     todoDiv.appendChild(newTodo);
-  
+
     saveLocalTodos(todoInput.value);
-  
+
     const trashBtn = document.createElement("div");
     trashBtn.innerHTML = '<img src="./images/icon-cross.svg" alt="icon-cross">';
     trashBtn.classList.add("trash");
     todoDiv.appendChild(trashBtn);
-  
+
     todoList.appendChild(todoDiv);
   } else {
-    alert("Please enter a task.")
+    alert("Please enter a task.");
   }
 
   todoInput.value = "";
@@ -196,44 +196,23 @@ function removeLocalTodos(todo) {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
-if (localStorage.getItem('darkMode') === null) {
-  localStorage.setItem('darkMode', "true");
+
+if (localStorage.getItem("darkMode") === null) {
+  localStorage.setItem("darkMode", "true");
 }
 
 checkStatus();
 
 function checkStatus() {
-  if (localStorage.getItem('darkMode') === "true") {
-    moon.classList.remove("display-moon");
-    sun.classList.remove("slide-sun");
-    darkImg.classList.remove("hide-img");
-    lightImg.classList.remove("show-img");
-    root.style.removeProperty("--VeryDarkBlue", "hsl(0, 0%, 98%)");
-    root.style.removeProperty("--VeryDarkDesaturatedBlue", "hsl(0, 0%, 98%)");
-    root.style.removeProperty("--LightGrayishBlue", "hsl(235, 24%, 19%)");
-    root.style.removeProperty("--VeryLightGrayishBlue", "hsl(235, 19%, 35%)");
-    root.style.removeProperty("--VeryDarkGrayishBlue", "hsl(236, 9%, 61%)");
-    root.style.removeProperty("--darkshadow", "#585656bd");
-    html.classList.add("firefox-dark");
-    html.classList.add("chromium-dark");
+  if (localStorage.getItem("darkMode") === "true") {
+    changeToDark();
   } else {
-    moon.classList.add("display-moon");
-    sun.classList.add("slide-sun");
-    darkImg.classList.add("hide-img");
-    lightImg.classList.add("show-img");
-    root.style.setProperty("--VeryDarkBlue", "hsl(0, 0%, 98%)");
-    root.style.setProperty("--VeryDarkDesaturatedBlue", "hsl(0, 0%, 98%)");
-    root.style.setProperty("--LightGrayishBlue", "hsl(235, 24%, 19%)");
-    root.style.setProperty("--VeryLightGrayishBlue", "hsl(235, 19%, 35%)");
-    root.style.setProperty("--VeryDarkGrayishBlue", "hsl(236, 9%, 61%)");
-    root.style.setProperty("--darkshadow", "#585656bd");
-    html.classList.remove("firefox-dark");
-    html.classList.remove("chromium-dark");
+    changeToLight();
   }
 }
 
 function changeToLight() {
-  localStorage.setItem('darkMode', "false");
+  localStorage.setItem("darkMode", "false");
   moon.classList.add("display-moon");
   sun.classList.add("slide-sun");
   darkImg.classList.add("hide-img");
@@ -249,7 +228,7 @@ function changeToLight() {
 }
 
 function changeToDark() {
-  localStorage.setItem('darkMode', "true");
+  localStorage.setItem("darkMode", "true");
   moon.classList.remove("display-moon");
   sun.classList.remove("slide-sun");
   darkImg.classList.remove("hide-img");
