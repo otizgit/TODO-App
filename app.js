@@ -70,7 +70,7 @@ function deleteTodo(e) {
     //ANIMATION
     removeLocalTodos(todo);
 
-    todo.addEventListener("transitionend", (e) => {
+    todo.addEventListener("animationend", (e) => {
       todo.remove();
     });
   }

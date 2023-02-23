@@ -220,9 +220,14 @@ main {
 }
 
 .fall {
-  transform: translateY(30px);
-  opacity: 0;
-  color: #777a92;
+  animation:  slide .5s ease forwards;
+}
+
+@keyframes slide {
+  to {
+    opacity: 0;
+    transform: translateX(100px);
+  }
 }
 
 .toggle-mode {
