@@ -110,7 +110,7 @@ function filterTodo(e) {
           todo.style.display = "flex";
           clearCompleted.addEventListener("click", function () {
             todo.classList.add("fall");
-            todo.addEventListener("transitionend", (e) => {
+            todo.addEventListener("animationend", (e) => {
               todo.remove();
             });
           });
